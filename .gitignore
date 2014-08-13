@@ -1,0 +1,12 @@
+# Ignore log files
+.log
+
+# Ignore OSX system files
+.DS_Store
+
+# Ignore Node modules folder
+node_modules
+
+/config
+
+count.json

@@ -1,0 +1,32 @@
+body {
+  font-family: "proxima-nova-soft",sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #222;
+  margin: 0.5em;
+  display: inline-block;
+}
+
+span {
+  display: inline-block;
+  line-height: 1em;
+}
+
+.detail {
+  color: #999;
+}
+
+h1 {
+  background: #222;
+  color: #fff;
+  padding: 5px;
+}
+
+.health h4 {
+  color: red;
+}
+
+.location h4 {
+  color: blue;
+}
