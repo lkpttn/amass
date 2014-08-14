@@ -79,6 +79,7 @@ var trackStream = lastfm.stream('inscien');
 
 trackStream.on('lastPlayed', function(track) {
   social.lastPlayed = track;
+  console.log(track);
 });
 
 trackStream.start();

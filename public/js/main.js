@@ -13,6 +13,23 @@ $(function() {
         var age = now.getTime() - birthday.getTime();
         age = age/(1000*60*60*24*365);
 
+        // Get yesterday Date object
+        var yesterday = new Date();
+        yesterday.setDate(yesterday.getDate() - 1);
+        // Yesterday as YYYYMMDD for Jawbone API calls
+        var yyyy = yesterday.getFullYear();
+        var mm = yesterday.getMonth() + 1;
+        if (mm < 10) {
+          mm = 0 + "" + mm;
+        }
+        var dd = yesterday.getDate();
+        if (dd < 10) {
+          dd = 0 + "" + dd;
+        }
+
+        console.log(yesterday);
+        console.log(yyyy + "" + mm + "" + dd);
+
         // Body
         $('.age').text(age.toFixed(2) + ' years');
         $('.weight').text(healthData.weight + 'lbs');
