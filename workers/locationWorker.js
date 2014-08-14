@@ -1,9 +1,11 @@
+// Link back to app.js
 var app = require('../app');
 var secrets = app.secrets;
 
+// locationData object to be passed in callback function
 var locationData = {};
 
-// Foursquare client IDs
+// Specfic requirements and variables
 var foursquareConfig = {
   'secrets' : {
     'clientId' : secrets.foursquare.clientId,
@@ -12,11 +14,11 @@ var foursquareConfig = {
   }
 }
 
-// Foursquare variables
 var Foursquare = require('node-foursquare')(foursquareConfig);
 var foursquareData = {};
 var mostRecentCheckin = null;
 
+// Update all location services
 this.locationUpdates = function(callback) {
   // Gets foursqare checkins
   Foursquare.Users.getCheckins(null, null, secrets.foursquare.accessToken, function (error, data) {

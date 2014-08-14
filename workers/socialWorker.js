@@ -1,9 +1,11 @@
+// Link back to app.js
 var app = require('../app');
 var secrets = app.secrets;
 
+// socialData object to be passed in callback function
 var socialData = {};
 
-// Last.fm variables
+// Specfic requirements and variables
 var LastFmNode = require('lastfm').LastFmNode;
 
 var lastfm = new LastFmNode({
@@ -11,6 +13,7 @@ var lastfm = new LastFmNode({
   secret: secrets.lastfm.secret
 });
 
+// Update all social services
 this.socialUpdates = function(callback) {
 
   // Get Last.fm recent tracks

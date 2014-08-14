@@ -10,7 +10,7 @@ var mealsSpreadsheet = new GoogleSpreadsheet(secrets.googleSpreadsheet.mealsID);
 // healthData object to be passed in callback function
 var healthData = {};
 
-this.googleSpreadsheetUpdates = function(callback) {
+this.healthUpdates = function(callback) {
 
   // Gets weight from google spreadsheet
   weightSpreadsheet.getInfo( function (err, sheet_info) {

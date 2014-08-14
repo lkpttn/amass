@@ -12,13 +12,13 @@ social = {};
 this.secrets = require(__dirname + '/secrets/secrets.json');
 var secrets = this.secrets;
 
-var googleSpreadsheetWorker = require(__dirname + '/workers/googleSpreadsheetWorker');
+var healthWorker = require(__dirname + '/workers/healthWorker');
 var locationWorker = require(__dirname + '/workers/locationWorker');
 var socialWorker = require(__dirname + '/workers/socialWorker');
 
 // Workers gathering information
-// Update google spreadsheet data and move into health object
-googleSpreadsheetWorker.googleSpreadsheetUpdates(function (healthData) {
+// Update health data and move into health object
+healthWorker.healthUpdates(function (healthData) {
   health = healthData;
 });
 
@@ -31,7 +31,6 @@ locationWorker.locationUpdates(function (locationData) {
 socialWorker.socialUpdates(function (socialData) {
   social = socialData;
 });
-
 
 
 // IDK
