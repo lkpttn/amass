@@ -30,20 +30,13 @@ var GoogleSpreadsheet = require('google-spreadsheet');
 var weightSpreadsheet = new GoogleSpreadsheet(secrets.googleSpreadsheet.weightID);
 var mealsSpreadsheet = new GoogleSpreadsheet(secrets.googleSpreadsheet.mealsID);
 
+// Last.fm variables
+var LastFmNode = require('lastfm').LastFmNode;
 
-
-// EXECUTE
-// Gets foursqare checkins
-Foursquare.Users.getCheckins(null, null, secrets.foursquare.accessToken, function (error, data) {
-
-  // Pulls checkins item out of JSON response
-  foursquareData = data.checkins;
-  mostRecentCheckin = data.checkins.items[0];
-
-  //console.log(mostRecentCheckin);
+var lastfm = new LastFmNode({
+  api_key: secrets.lastfm.apiKey,
+  secret: secrets.lastfm.secret
 });
-
-
 
 // Gets weight from google spreadsheet
 weightSpreadsheet.getInfo( function (err, sheet_info) {
@@ -81,8 +74,14 @@ mealsSpreadsheet.getInfo( function (err, sheet_info) {
   });
 });
 
+// Get Last.fm recent tracks
+var trackStream = lastfm.stream('inscien');
 
+trackStream.on('lastPlayed', function(track) {
+  social.lastPlayed = track;
+});
 
+trackStream.start();
 
 // IDK
 app.use(express.static(__dirname + '/public'));
@@ -93,13 +92,19 @@ app.get('/', function(req, res) {
 });
 
 app.get('/foursquare', function(req, res) {
-  // Spit out most recent foursquare checkin
-  res.json(foursquareData);
+  Foursquare.Users.getCheckins(null, null, secrets.foursquare.accessToken, function (error, data) {
+    // Pulls checkins item out of JSON response
+    foursquareData = data.checkins;
+    res.json(foursquareData);
+  });
 });
 
 app.get('/health', function(req, res) {
-  // Spit out most recent foursquare checkin
   res.json(health);
+});
+
+app.get('/social', function(req, res) {
+  res.json(social);
 });
 
 // Set up express server on port 3000

@@ -1,6 +1,6 @@
 $(function() {
 
-    var updateHealth = function() {
+  var updateHealth = function() {
     $.ajax('/health', {
       dataType: 'json',
       type: 'GET',
@@ -54,4 +54,23 @@ $(function() {
   };
 
   updateFoursquare();
+
+  var updateSocial = function() {
+    $.ajax('/social', {
+      dataType: 'json',
+      type: 'GET',
+      success: function(data) {
+        var socialData = data;
+
+        // Hack around Last.fm JSON including a #text
+        var lastPlayedArtist = socialData.lastPlayed.artist['#text'];
+
+        // Last.fm
+        $('.lastPlayed').text(socialData.lastPlayed.name);
+        $('.lastPlayedArtist').text(lastPlayedArtist);
+      }
+    });
+  };
+
+  updateSocial();
 });
