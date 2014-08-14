@@ -45,11 +45,11 @@ $(function() {
   updateHealth();
 
   var updateFoursquare = function() {
-    $.ajax('/foursquare', {
+    $.ajax('/location', {
       dataType: 'json',
       type: 'GET',
       success: function(data) {
-        var foursquareData = data;
+        var location = data;
         var mostRecentCheckin = data.items[0];
 
         // Time of most recent checkin
@@ -63,7 +63,7 @@ $(function() {
 
         // Loop for last 4 checkins
         for (i = 1; i < 5; i++) {
-          var tempCheckin = foursquareData.items[i];
+          var tempCheckin = location.items[i];
           $('.foursquareRecent'+i).text(tempCheckin.venue.name);
         }
       }
