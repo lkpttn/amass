@@ -13,23 +13,6 @@ $(function() {
         var age = now.getTime() - birthday.getTime();
         age = age/(1000*60*60*24*365);
 
-        // Get yesterday Date object
-        var yesterday = new Date();
-        yesterday.setDate(yesterday.getDate() - 1);
-        // Yesterday as YYYYMMDD for Jawbone API calls
-        var yyyy = yesterday.getFullYear();
-        var mm = yesterday.getMonth() + 1;
-        if (mm < 10) {
-          mm = 0 + "" + mm;
-        }
-        var dd = yesterday.getDate();
-        if (dd < 10) {
-          dd = 0 + "" + dd;
-        }
-
-        console.log(yesterday);
-        console.log(yyyy + "" + mm + "" + dd);
-
         // Body
         $('.age').text(age.toFixed(2) + ' years');
         $('.weight').text(healthData.weight + 'lbs');
@@ -38,6 +21,16 @@ $(function() {
         // Food
         $('.latestMeal').text(healthData.latestMeal);
         $('.calories').text(healthData.latestMealCalories);
+
+        // Activity
+        var jawboneMoves = healthData.jawboneMoveData.details;
+        $('.yesterdaySteps').text(jawboneMoves.steps);
+        $('.milesWalked').text((jawboneMoves.distance/1609.344).toFixed(2) + " miles");
+        $('.caloriedBurned').text((jawboneMoves.calories).toFixed(0));
+        $('.activeTime').text(
+          Math.floor(jawboneMoves.active_time/60/60) + " hours " // Hours
+          + Math.round(jawboneMoves.active_time/60 % 60) + " minutes" // Minutes remaining
+          );
       }
     });
   };
@@ -58,7 +51,7 @@ $(function() {
         var minutes = checkinDate.getMinutes();
 
         // Most recent checkin
-        $('.latestCheckin').text(mostRecentCheckin.venue.name).css('color','blue');
+        $('.latestCheckin').text(mostRecentCheckin.venue.name).css('color','#47b3e6');
         $('.time').text(hours + ':' + minutes);
 
         // Loop for last 4 checkins

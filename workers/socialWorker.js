@@ -27,4 +27,5 @@ this.socialUpdates = function(callback) {
   trackStream.start();
 
   callback(socialData);
+
 };

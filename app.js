@@ -1,4 +1,3 @@
-// CONFIG
 // Server and express variables
 var express = require('express');
 var app = express();

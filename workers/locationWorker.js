@@ -25,9 +25,9 @@ this.locationUpdates = function(callback) {
 
     // Pulls checkins item out of JSON response
     mostRecentCheckin = data.checkins.items[0];
-    locationData = data.checkins;
+    locationData.foursquare = data.checkins;
     // console.log(locationData);
 
-  callback(locationData);
+  callback(locationData.foursquare);
   });
 };

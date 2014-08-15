@@ -7,6 +7,14 @@ var GoogleSpreadsheet = require('google-spreadsheet');
 var weightSpreadsheet = new GoogleSpreadsheet(secrets.googleSpreadsheet.weightID);
 var mealsSpreadsheet = new GoogleSpreadsheet(secrets.googleSpreadsheet.mealsID);
 
+var jawboneOptions = {
+  // ** REQUIRED **
+  access_token:  secrets.jawbone.access_token  // Access token for specific user,
+  //client_secret: secrets.jawbone.client_secret  // Client Secret (required for up.refreshToken.get())
+}
+
+var up = require('jawbone-up')(jawboneOptions);
+
 // healthData object to be passed in callback function
 var healthData = {};
 
@@ -14,7 +22,7 @@ this.healthUpdates = function(callback) {
 
   // Gets weight from google spreadsheet
   weightSpreadsheet.getInfo( function (err, sheet_info) {
-    console.log( sheet_info.title + ' is loaded' );
+    console.log( sheet_info.title + ' data is loaded' );
     sheet_info.worksheets[0].getRows( function(err, rows) {
 
       // Variable for the latest measurement
@@ -47,6 +55,32 @@ this.healthUpdates = function(callback) {
       healthData.latestMeal = rows[latestMeal].description;
       healthData.latestMealCalories = rows[latestMeal].calories;
     });
+  });
+
+  // Get yesterday Date object
+  var yesterday = new Date();
+  yesterday.setDate(yesterday.getDate() - 1);
+  // Yesterday as YYYYMMDD for Jawbone API calls
+  var yyyy = yesterday.getFullYear();
+  var mm = yesterday.getMonth() + 1;
+  if (mm < 10) {
+    mm = 0 + "" + mm;
+  }
+  var dd = yesterday.getDate();
+  if (dd < 10) {
+    dd = 0 + "" + dd;
+  }
+  yesterday = yyyy + "" + mm + "" + dd;
+
+  // Retreives physical activity for yesterday
+  up.moves.get({'date': yesterday}, function (err, body) {
+    if (err) {
+      console.log('Error: ' + err);
+    }
+    else {
+      var data = JSON.parse(body).data;
+      health.jawboneMoveData = data.items[0];
+    }
   });
 
   callback(healthData);
