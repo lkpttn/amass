@@ -78,8 +78,21 @@ this.healthUpdates = function(callback) {
       console.log('Error: ' + err);
     }
     else {
+      console.log('Movement data is loaded')
       var data = JSON.parse(body).data;
       health.jawboneMoveData = data.items[0];
+    }
+  });
+
+  // Retreives sleep activity for last night
+  up.sleeps.get({'date': yesterday}, function (err, body) {
+    if (err) {
+      console.log('Error: ' + err);
+    }
+    else {
+      console.log('Sleep data is loaded')
+      var data = JSON.parse(body).data;
+      health.jawboneSleepData = data.items[0];
     }
   });
 

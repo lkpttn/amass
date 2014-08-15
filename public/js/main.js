@@ -31,6 +31,25 @@ $(function() {
           Math.floor(jawboneMoves.active_time/60/60) + " hours " // Hours
           + Math.round(jawboneMoves.active_time/60 % 60) + " minutes" // Minutes remaining
           );
+         $('.inactiveTime').text(
+          Math.floor(jawboneMoves.inactive_time/60/60) + " hours " // Hours
+          + Math.round(jawboneMoves.inactive_time/60 % 60) + " minutes" // Minutes remaining
+          );
+
+        // Sleep
+        var jawboneSleep = healthData.jawboneSleepData.details;
+         $('.yesterdaySleep').text(
+          Math.floor((jawboneSleep.duration - jawboneSleep.awake)/60/60) + " hours " // Hours
+          + Math.round((jawboneSleep.duration- jawboneSleep.awake)/60 % 60) + " minutes" // Minutes remaining
+          );
+         $('.deepSleep').text(
+          Math.floor(jawboneSleep.sound/60/60) + " hours " // Hours
+          + Math.round(jawboneSleep.sound/60 % 60) + " minutes" // Minutes remaining
+          );
+         $('.lightSleep').text(
+          Math.floor(jawboneSleep.light/60/60) + " hours " // Hours
+          + Math.round(jawboneSleep.light/60 % 60) + " minutes" // Minutes remaining
+          );
       }
     });
   };
