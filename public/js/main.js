@@ -19,8 +19,17 @@ $(function() {
         $('.bodyFat').text(healthData.bodyFat + '%');
 
         // Food
-        $('.latestMeal').text(healthData.latestMeal);
-        $('.calories').text(healthData.latestMealCalories);
+        $('.latestMeal').text(healthData.todayFood.latestMeal);
+        $('.calories').text(healthData.todayFood.latestMealCalories);
+
+        // Today Food
+        $('.todayCalories').text(healthData.todayFood.calories);
+        $('.todayProtein').text(healthData.todayFood.protein);
+        $('.todayCarbs').text(healthData.todayFood.carbohydrate);
+        $('.todayFiber').text(healthData.todayFood.fiber);
+        $('.todayUnsatFat').text(healthData.todayFood.unsaturated_fat);
+        $('.todaySatFat').text(healthData.todayFood.saturated_fat);
+        $('.todaySodium').text(healthData.todayFood.sodium);
 
         // Activity
         var jawboneMoves = healthData.jawboneMoveData.details;
@@ -56,7 +65,7 @@ $(function() {
 
   updateHealth();
 
-  var updateFoursquare = function() {
+  var updateLocation = function() {
     $.ajax('/location', {
       dataType: 'json',
       type: 'GET',
@@ -82,7 +91,7 @@ $(function() {
     });
   };
 
-  updateFoursquare();
+  updateLocation();
 
   var updateSocial = function() {
     $.ajax('/social', {
