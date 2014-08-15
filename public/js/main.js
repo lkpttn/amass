@@ -15,7 +15,7 @@ $(function() {
 
         // Body
         $('.age').text(age.toFixed(2) + ' years');
-        $('.weight').text(healthData.weight + 'lbs');
+        $('.weight').text(healthData.weight + ' lbs');
         $('.bodyFat').text(healthData.bodyFat + '%');
 
         // Food
@@ -24,12 +24,12 @@ $(function() {
 
         // Today Food
         $('.todayCalories').text(healthData.todayFood.calories);
-        $('.todayProtein').text(healthData.todayFood.protein);
-        $('.todayCarbs').text(healthData.todayFood.carbohydrate);
-        $('.todayFiber').text(healthData.todayFood.fiber);
-        $('.todayUnsatFat').text(healthData.todayFood.unsaturated_fat);
-        $('.todaySatFat').text(healthData.todayFood.saturated_fat);
-        $('.todaySodium').text(healthData.todayFood.sodium);
+        $('.todayProtein').text(healthData.todayFood.protein + 'g');
+        $('.todayCarbs').text(healthData.todayFood.carbohydrate + 'g');
+        $('.todayFiber').text(healthData.todayFood.fiber + 'g');
+        $('.todayUnsatFat').text(healthData.todayFood.unsaturated_fat + 'g');
+        $('.todaySatFat').text(healthData.todayFood.saturated_fat + 'g');
+        $('.todaySodium').text(healthData.todayFood.sodium + 'mg');
 
         // Activity
         var jawboneMoves = healthData.jawboneMoveData.details;
@@ -106,6 +106,12 @@ $(function() {
         // Last.fm
         $('.lastPlayed').text(socialData.lastPlayed.name);
         $('.lastPlayedArtist').text(lastPlayedArtist);
+
+        // Instagram
+        document.getElementById('lastPhoto').setAttribute('src', socialData.instagram.lastPhoto);
+        $('.lastPhotoCaption').text(socialData.instagram.lastPhotoCaption);
+        $('.lastPhotoLikes').text(socialData.instagram.lastPhotoLikes);
+        $('.lastPhotoComments').text(socialData.instagram.lastPhotoComments);
       }
     });
   };

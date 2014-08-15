@@ -2,18 +2,19 @@
 var app = require('../app');
 var secrets = app.secrets;
 
-// Specfic requirements and variables
+// Google Spreadsheet
 var GoogleSpreadsheet = require('google-spreadsheet');
 var weightSpreadsheet = new GoogleSpreadsheet(secrets.googleSpreadsheet.weightID);
-var mealsSpreadsheet = new GoogleSpreadsheet(secrets.googleSpreadsheet.mealsID);
 
+// Jawbone
 var jawboneOptions = {
   access_token:  secrets.jawbone.access_token
   //client_secret: secrets.jawbone.client_secret  // Client Secret (required for up.refreshToken.get())
 }
 var up = require('jawbone-up')(jawboneOptions);
 
-// healthData object to be passed in callback function
+
+
 var healthData = {};
 
 this.healthUpdates = function(callback) {
@@ -77,7 +78,7 @@ this.healthUpdates = function(callback) {
   });
 
   // Retreives sleep activity for last night
-  up.sleeps.get({'date': yesterday}, function (err, body) {
+  up.sleeps.get({'date': today}, function (err, body) {
     if (err) {
       console.log('Error: ' + err);
     }
