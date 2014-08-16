@@ -70,8 +70,8 @@ $(function() {
       dataType: 'json',
       type: 'GET',
       success: function(data) {
-        var location = data;
-        var mostRecentCheckin = data.items[0];
+        var locationData = data;
+        var mostRecentCheckin = locationData.foursquare.checkins.items[0];
 
         // Time of most recent checkin
         var checkinDate = new Date(mostRecentCheckin.createdAt*1000);
@@ -84,9 +84,37 @@ $(function() {
 
         // Loop for last 4 checkins
         for (i = 1; i < 5; i++) {
-          var tempCheckin = location.items[i];
+          var tempCheckin = locationData.foursquare.checkins.items[i];
           $('.foursquareRecent'+i).text(tempCheckin.venue.name);
         }
+
+        // Food venue checkins
+        var foodHistory = locationData.foursquare.foodHistory.venues.items;
+        var foodList = '';
+        for (i = 0; i < foodHistory.length; i++) {
+          foodList += locationData.foursquare.foodHistory.venues.items[i].venue.name + ", ";
+        }
+        foodList = foodList.slice(0, -2);
+        $('.foodVenuePlace').text(foodList);
+
+        // Entertainment venue checkins
+        var entertainmentHistory = locationData.foursquare.entertainmentHistory.venues.items;
+        var entertainmentList = '';
+        for (i = 0; i < entertainmentHistory.length; i++) {
+          entertainmentList += locationData.foursquare.entertainmentHistory.venues.items[i].venue.name + ", ";
+        }
+        entertainmentList = entertainmentList.slice(0, -2);
+        $('.entertainmentVenuePlace').text(entertainmentList);
+
+        // travel venue checkins
+        var travelHistory = locationData.foursquare.travelHistory.venues.items;
+        var travelList = '';
+        for (i = 0; i < travelHistory.length; i++) {
+          travelList += locationData.foursquare.travelHistory.venues.items[i].venue.name + ", ";
+        }
+        travelList = travelList.slice(0, -2);
+        $('.travelVenuePlace').text(travelList);
+
       }
     });
   };

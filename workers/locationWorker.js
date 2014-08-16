@@ -4,6 +4,7 @@ var secrets = app.secrets;
 
 // locationData object to be passed in callback function
 var locationData = {};
+locationData.foursquare = {};
 
 // Specfic requirements and variables
 var foursquareConfig = {
@@ -25,9 +26,24 @@ this.locationUpdates = function(callback) {
 
     // Pulls checkins item out of JSON response
     mostRecentCheckin = data.checkins.items[0];
-    locationData.foursquare = data.checkins;
-    // console.log(locationData);
-
-  callback(locationData.foursquare);
+    locationData.foursquare.checkins = data.checkins;
   });
+
+  Foursquare.Users.getVenueHistory(null,{'categoryId': '4d4b7105d754a06374d81259'}, secrets.foursquare.accessToken, function (error, data) {
+    // Gets food category venue history
+    location.foursquare.foodHistory = data;
+  })
+
+  Foursquare.Users.getVenueHistory(null,{'categoryId': '4d4b7104d754a06370d81259'}, secrets.foursquare.accessToken, function (error, data) {
+    // Gets entertainment category venue history
+    location.foursquare.entertainmentHistory = data;
+  })
+
+  Foursquare.Users.getVenueHistory(null,{'categoryId': '4d4b7105d754a06379d81259'}, secrets.foursquare.accessToken, function (error, data) {
+    // Gets travel category venue history
+    location.foursquare.travelHistory = data;
+  })
+
+
+  callback(locationData);
 };
