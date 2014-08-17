@@ -4,7 +4,6 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #222;
   margin: 0.5em;
   display: inline-block;
   text-transform: uppercase;
@@ -19,25 +18,44 @@ span {
   color: #999;
 }
 
+.container {
+  width: 960px;
+  margin: 0 auto;
+}
 
 .section-title {
+  font-size: 2em;
   color: #fff;
   margin: 0;
-  padding: 25px;
+  padding: 25px 0;
   width: 100%;
   text-transform: uppercase;
   font-weight: 100;
 }
 
-.health .section-title {
+.person {
+  height: 400px;
+  background: #3a3d42;
+  color: #fff;
+}
+
+.name {
+  width: auto;
+  line-height: .5em;
+  padding: 10px 0;
+  margin-top: 150px;
+  border-bottom: 1px solid #fff;
+}
+
+.health-section {
   background: #f55949;
 }
 
-.location .section-title {
+.location-section {
   background: #47b3e6;
 }
 
-.social .section-title {
+.social-section {
   background: #9acc54;
 }
 
@@ -47,6 +65,10 @@ span {
 
 .location h4 {
   color: #47b3e6;
+}
+
+.social h4 {
+  color: #9acc54;
 }
 
 img {
