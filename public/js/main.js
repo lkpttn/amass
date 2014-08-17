@@ -153,11 +153,18 @@ $(function() {
           $('.playcount'+i).text(topArtist.playcount);
         }
 
+        $('.totalPlaycount').text(lastfm.user.playcount);
+        $('.totalArtists').text(lastfm.artists.total);
+
         // Instagram
         document.getElementById('lastPhoto').setAttribute('src', socialData.instagram.lastPhoto);
         $('.lastPhotoCaption').text(socialData.instagram.lastPhotoCaption);
         $('.lastPhotoLikes').text(socialData.instagram.lastPhotoLikes);
         $('.lastPhotoComments').text(socialData.instagram.lastPhotoComments);
+
+        $('.photoCount').text(socialData.instagram.counts.media);
+        $('.followerCount').text(socialData.instagram.counts.followed_by);
+        $('.followingCount').text(socialData.instagram.counts.follows);
       }
     });
   };
