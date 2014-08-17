@@ -136,12 +136,22 @@ $(function() {
       success: function(data) {
         var socialData = data;
 
+        var lastfm = socialData.lastfm;
+
         // Hack around Last.fm JSON including a #text
-        var lastPlayedArtist = socialData.lastPlayed.artist['#text'];
+        var recentlyPlayedArtist = lastfm.recentlyPlayed.track[0].artist['#text'];
+        var recentlyPlayedAlbumArt = lastfm.recentlyPlayed.track[0].image[3]['#text'];
 
         // Last.fm
-        $('.lastPlayed').text(socialData.lastPlayed.name);
-        $('.lastPlayedArtist').text(lastPlayedArtist);
+        $('.lastPlayed').text(lastfm.recentlyPlayed.track[0].name);
+        $('.lastPlayedArtist').text(recentlyPlayedArtist);
+        document.getElementById('lastPlayedAlbumArt').setAttribute('src', recentlyPlayedAlbumArt);
+
+        for (i = 0; i < 5; i++) {
+          var topArtist = lastfm.weeklyArtists.artist[i];
+          $('.topArtist'+i).text(topArtist.name);
+          $('.playcount'+i).text(topArtist.playcount);
+        }
 
         // Instagram
         document.getElementById('lastPhoto').setAttribute('src', socialData.instagram.lastPhoto);

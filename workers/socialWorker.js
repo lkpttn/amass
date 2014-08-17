@@ -2,6 +2,8 @@
 var app = require('../app');
 var secrets = app.secrets;
 
+var request = require('superagent');
+
 var socialData = {};
 
 // Last.fm
@@ -25,15 +27,32 @@ socialData.instagram = {};
 // Update all social services
 this.socialUpdates = function(callback) {
 
-  // Get Last.fm recent tracks
-  var trackStream = lastfm.stream('inscien');
+  // Last.fm variables
+  var recentlyPlayedUrl = "http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks";
+  var weeklyArtistUrl = "http://ws.audioscrobbler.com/2.0/?method=user.getweeklyartistchart";
 
-  trackStream.on('lastPlayed', function(track) {
-    socialData.lastPlayed = track;
-    console.log('Last.fm data loaded');
-  });
+  socialData.lastfm = {};
 
-  trackStream.start();
+  // Gets recently played songs JSON
+  request
+    .get(recentlyPlayedUrl)
+    .query({user : secrets.lastfm.user})
+    .query({api_key: secrets.lastfm.apiKey})
+    .query({format: "json"})
+    .end(function(res){
+      socialData.lastfm.recentlyPlayed = res.body.recenttracks;
+    });
+
+  // Gets most played artists this week
+  request
+    .get(weeklyArtistUrl)
+    .query({user : secrets.lastfm.user})
+    .query({api_key: secrets.lastfm.apiKey})
+    .query({format: "json"})
+    .end(function(res){
+      socialData.lastfm.weeklyArtists = res.body.weeklyartistchart;
+    });
+
 
   // Get most recent Instagram photo
   ig.user_media_recent('10965807', {'count': 1}, function(err, medias, pagination, limit) {

@@ -107,7 +107,7 @@ this.healthUpdates = function(callback) {
 
       // Return nothing if no meals have been eaten today
       if (typeof latestMeal === 'undefined') {
-        todayFood.latestMeal = "Nothing!"
+        todayFood.latestMeal = "Nothing today!"
         todayFood.latestMealCalories = 0;
       }
       else {
