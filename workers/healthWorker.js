@@ -101,18 +101,31 @@ this.healthUpdates = function(callback) {
       lastIndex = foodData.length - 1;
       health.todayFood = {};
       todayFood = health.todayFood;
+      var latestMeal = foodData[lastIndex];
 
       // Latest meal
-      todayFood.latestMeal = foodData[lastIndex].note;
-      todayFood.latestMealCalories = foodData[lastIndex].details.calories;
+
+      // Return nothing if no meals have been eaten today
+      if (typeof latestMeal === 'undefined') {
+        todayFood.latestMeal = "Nothing!"
+        todayFood.latestMealCalories = 0;
+      }
+      else {
+        todayFood.latestMeal = foodData[lastIndex].note;
+        todayFood.latestMealCalories = foodData[lastIndex].details.calories
+      }
+
+      //todayFood.latestMeal = foodData[lastIndex].note;
+      //todayFood.latestMealCalories = foodData[lastIndex].details.calories;
+
       // Today's food
-      todayFood.calories = null;
-      todayFood.protein = null;
-      todayFood.carbohydrate = null;
-      todayFood.fiber = null;
-      todayFood.unsaturated_fat = null;
-      todayFood.saturated_fat = null;
-      todayFood.sodium = null;
+      todayFood.calories = 0;
+      todayFood.protein = 0;
+      todayFood.carbohydrate = 0;
+      todayFood.fiber = 0;
+      todayFood.unsaturated_fat = 0;
+      todayFood.saturated_fat = 0;
+      todayFood.sodium = 0;
 
       for (i=0; i < foodData.length; i++) {
         todayFood.calories = todayFood.calories + foodData[i].details.calories;

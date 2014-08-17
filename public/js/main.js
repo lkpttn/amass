@@ -46,7 +46,14 @@ $(function() {
           );
 
         // Sleep
-        var jawboneSleep = healthData.jawboneSleepData.details;
+        var sleeping = "I'm probably asleep right now!";
+        // If there's no sleep data available
+        if (typeof healthData.jawboneSleepData === "undefined") {
+          $('.yesterdaySleep').text(sleeping);
+          $('.deepSleep').text('~');
+          $('.lightSleep').text('~');
+        } else {
+          var jawboneSleep = healthData.jawboneSleepData.details;
          $('.yesterdaySleep').text(
           Math.floor((jawboneSleep.duration - jawboneSleep.awake)/60/60) + " hours " // Hours
           + Math.round((jawboneSleep.duration- jawboneSleep.awake)/60 % 60) + " minutes" // Minutes remaining
@@ -59,6 +66,7 @@ $(function() {
           Math.floor(jawboneSleep.light/60/60) + " hours " // Hours
           + Math.round(jawboneSleep.light/60 % 60) + " minutes" // Minutes remaining
           );
+        }
       }
     });
   };
