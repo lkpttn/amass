@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/skeleton.css">
     <script type="text/javascript" src="//use.typekit.net/hrx1wrx.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
     <title>My Cool Website</title>
@@ -15,7 +16,7 @@
         </section>
     </div>
 
-    <div class="health">
+    <div class="health block">
         <section class="health-section">
             <section class="container">
                 <h1 class="section-title">Health</h1>
@@ -23,47 +24,45 @@
         </section>
 
         <section class="container">
-        <div class="body">
-            <h4>Age</h4><span class="age">22</span>
-            <h4>Height</h4><span class="height">5'11</span>
-            <h4>Weight</h4><span class="weight"></span>
-            <h4>Fat Percentage</h4><span class="bodyFat"></span>
-        </div>
-
-         <div class="activity">
-            <h4>Yesterday's Steps</h4><span class="yesterdaySteps"></span>
-            <h4>Distance</h4><span class="milesWalked"></span>
-            <h4>Calories Burned</h4><span class="caloriedBurned"></span>
-            <h4>Active Time</h4><span class="activeTime"></span>
-            <h4>Inactive Time</h4><span class="inactiveTime"></span>
-        </div>
-
-        <div class="sleep">
-            <h4>Last Night's Sleep</h4><span class="yesterdaySleep"></span>
-            <h4>Deep Sleep</h4><span class="deepSleep"></span>
-            <h4>Light Sleep</h4><span class="lightSleep"></span>
-        </div>
-
-        <div class="food">
-            <h4>Latest Meal</h4><span class="latestMeal"></span>
-            <h4>Calories</h4><span class="calories"></span>
-        </div>
-
-        <div class="todayFood">
-            <h4>Total Calories Today</h4><span class="todayCalories"></span>
-            <h4>Protein</h4><span class="todayProtein"></span>
-            <h4>Carbohydrates</h4><span class="todayCarbs"></span>
-            <h4>Fiber</h4><span class="todayFiber"></span>
-            <div>
-            <h4>Unsaturated Fats</h4><span class="todayUnsatFat"></span>
-            <h4>Saturated Fats</h4><span class="todaySatFat"></span>
-            <h4>Sodium</h4><span class="todaySodium"></span>
+            <div class="body eight columns alpha block">
+                <h4>Age</h4><span class="age">22</span>
+                <h4>Height</h4><span class="height">5'11</span>
+                <h4>Weight</h4><span class="weight"></span>
+                <h4>Fat Percentage</h4><span class="bodyFat"></span>
             </div>
-        </div>
-    </section>
+
+             <div class="activity eight columns omega block">
+                <h4>Yesterday's Steps</h4><span class="yesterdaySteps"></span>
+                <h4>Distance</h4><span class="milesWalked"></span>
+                <h4>Calories Burned</h4><span class="caloriedBurned"></span>
+                <h4>Active Time</h4><span class="activeTime"></span>
+                <h4>Inactive Time</h4><span class="inactiveTime"></span>
+
+                <h4>Last Night's Sleep</h4><span class="yesterdaySleep"></span>
+                <h4>Deep Sleep</h4><span class="deepSleep"></span>
+                <h4>Light Sleep</h4><span class="lightSleep"></span>
+            </div>
+
+            <div class="food eight columns alpha block">
+                <h4>Latest Meal</h4><span class="latestMeal"></span>
+                <h4>Calories</h4><span class="calories"></span>
+            </div>
+
+            <div class="todayFood eight columns omega block">
+                <h4>Total Calories Today</h4><span class="todayCalories"></span>
+                <h4>Protein</h4><span class="todayProtein"></span>
+                <h4>Carbohydrates</h4><span class="todayCarbs"></span>
+                <h4>Fiber</h4><span class="todayFiber"></span>
+                <div>
+                <h4>Unsaturated Fats</h4><span class="todayUnsatFat"></span>
+                <h4>Saturated Fats</h4><span class="todaySatFat"></span>
+                <h4>Sodium</h4><span class="todaySodium"></span>
+                </div>
+            </div>
+        </section>
     </div>
 
-    <div class="location">
+    <div class="location block">
         <section class="location-section">
             <section class="container">
                 <h1 class="section-title">Location</h1>
@@ -71,12 +70,14 @@
         </section>
 
         <section class="container">
-        <div class="lastCheckin">
-            <h2>My last check in was at <span class="latestCheckin"></span></h2>
-            <h2>At <span class='time'></span></h2>
+        <div class="mapbox eight columns alpha">
+            <span>Blah blah blah</span>
         </div>
 
-        <div class="checkins">
+        <div class="lastCheckin eight columns omega">
+            <h2>My last check in was at <span class="latestCheckin"></span></h2>
+            <h2>At <span class='time'></span></h2>
+
             <h4>Previously</h4>
             <h3><span class="foursquareRecent1 detail"></span></h3>
             <h3><span class="foursquareRecent2 detail"></span></h3>
@@ -84,21 +85,21 @@
             <h3><span class="foursquareRecent4 detail"></span></h3>
         </div>
 
-        <div class="foodVenues">
+        <div class="foodVenues eight columns alpha">
             <h4>Food</h4><span class="foodVenuePlace"></span>
         </div>
 
-        <div class="entertainmentVenues">
+        <div class="entertainmentVenues eight columns omega">
             <h4>Arts and Entertainment</h4><span class="entertainmentVenuePlace"></span>
         </div>
 
-        <div class="travelVenues">
+        <!--  <div class="travelVenues eight columns alpha">
             <h4>Travel</h4><span class="travelVenuePlace"></span>
-        </div>
+        </div> -->
         </section>
     </div>
 
-    <div class="social">
+    <div class="social block">
         <section class="social-section">
             <section class="container">
                 <h1 class="section-title">Social</h1>
@@ -106,7 +107,7 @@
         </section>
 
         <section class="container">
-            <div class="lastfm">
+            <div class="lastfm eight columns alpha">
                 <h4>Last Played Song</h4>
                 <span><img id="lastPlayedAlbumArt"></span>
                 <span class="lastPlayed"></span>
@@ -124,7 +125,7 @@
                 <h4>Total Artists</h4><span class="totalArtists"></span>
             </div>
 
-            <div class="instagram">
+            <div class="instagram eight columns omega">
                 <h4>Most Recent Photo</h4>
                 <span><img id="lastPhoto"></span>
                 <h4>Caption</h4><span class="lastPhotoCaption"></span>

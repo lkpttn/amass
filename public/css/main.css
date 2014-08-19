@@ -4,7 +4,9 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  margin: 0.5em;
+  font-family: "effra",sans-serif;
+  margin-right: 0.5em;
+  margin-bottom: 0.5em;
   display: inline-block;
   text-transform: uppercase;
 }
@@ -12,18 +14,19 @@ h1, h2, h3, h4, h5, h6 {
 span {
   display: inline-block;
   line-height: 1em;
+  margin-right: .5em;
 }
 
 .detail {
   color: #999;
 }
 
-.container {
-  width: 960px;
-  margin: 0 auto;
+.block {
+  margin-bottom: 40px;
 }
 
 .section-title {
+  font-family: "proxima-nova-soft",sans-serif;
   font-size: 2em;
   color: #fff;
   margin: 0;
@@ -49,6 +52,7 @@ span {
 
 .health-section {
   background: #f55949;
+  display: block;
 }
 
 .location-section {

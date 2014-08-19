@@ -20,16 +20,16 @@ $(function() {
 
         // Food
         $('.latestMeal').text(healthData.todayFood.latestMeal);
-        $('.calories').text(healthData.todayFood.latestMealCalories);
+        $('.calories').text(healthData.todayFood.latestMealCalories.toFixed(2));
 
         // Today Food
-        $('.todayCalories').text(healthData.todayFood.calories);
-        $('.todayProtein').text(healthData.todayFood.protein + 'g');
-        $('.todayCarbs').text(healthData.todayFood.carbohydrate + 'g');
-        $('.todayFiber').text(healthData.todayFood.fiber + 'g');
-        $('.todayUnsatFat').text(healthData.todayFood.unsaturated_fat + 'g');
-        $('.todaySatFat').text(healthData.todayFood.saturated_fat + 'g');
-        $('.todaySodium').text(healthData.todayFood.sodium + 'mg');
+        $('.todayCalories').text(healthData.todayFood.calories.toFixed(2));
+        $('.todayProtein').text(healthData.todayFood.protein.toFixed(2) + 'g');
+        $('.todayCarbs').text(healthData.todayFood.carbohydrate.toFixed(2) + 'g');
+        $('.todayFiber').text(healthData.todayFood.fiber.toFixed(2) + 'g');
+        $('.todayUnsatFat').text(healthData.todayFood.unsaturated_fat.toFixed(2) + 'g');
+        $('.todaySatFat').text(healthData.todayFood.saturated_fat.toFixed(2) + 'g');
+        $('.todaySodium').text(healthData.todayFood.sodium.toFixed(2) + 'mg');
 
         // Activity
         var jawboneMoves = healthData.jawboneMoveData.details;
