@@ -136,6 +136,16 @@ $(function() {
       success: function(data) {
         var socialData = data;
 
+        var twitter = socialData.twitter;
+
+        // Twitter most recent status
+        $('.latestTweet').text(twitter.status.text);
+
+        // Twitter stats
+        $('.twitterTweets').text(twitter.statuses_count);
+        $('.twitterFollowers').text(twitter.followers_count);
+        $('.twitterFollowing').text(twitter.friends_count);
+
         var lastfm = socialData.lastfm;
 
         // Hack around Last.fm JSON including a #text

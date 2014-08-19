@@ -6,6 +6,16 @@ var request = require('superagent');
 
 var socialData = {};
 
+// Twitter
+var twitterAPI = require('node-twitter-api');
+
+var twitter = new twitterAPI({
+    consumerKey: secrets.twitter.consumerKey,
+    consumerSecret: secrets.twitter.consumerSecret
+});
+
+socialData.twitter = {};
+
 // Instagram
 var ig = require('instagram-node').instagram();
 
@@ -19,6 +29,16 @@ socialData.instagram = {};
 
 // Update all social services
 this.socialUpdates = function(callback) {
+
+  // Twitter
+  twitter.users("show", {'screen_name' : 'friendofpixels'}, secrets.twitter.accessToken, secrets.twitter.accessTokenSecret, function(error, data, response) {
+    if (error) {
+        console.log(error);
+    } else {
+        console.log('Twitter data is loaded');
+        socialData.twitter = data;
+    }
+  });
 
   // Last.fm variables
   var recentlyPlayedUrl = "http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks";
@@ -69,6 +89,7 @@ this.socialUpdates = function(callback) {
       socialData.lastfm.artists = res.body.topartists['@attr'];
     });
 
+  console.log('Last.fm data is loaded');
 
   // Get most recent Instagram photo
   ig.user_media_recent('10965807', {'count': 1}, function(err, medias, pagination, limit) {
@@ -80,6 +101,7 @@ this.socialUpdates = function(callback) {
 
   ig.user('10965807', function(err, result, limit) {
     socialData.instagram.counts = result.counts;
+    console.log('Instagram data is loaded');
   });
 
   callback(socialData);
