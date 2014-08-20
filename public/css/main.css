@@ -4,6 +4,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
   font-family: "effra",sans-serif;
   margin-right: 0.5em;
   margin-bottom: 0.5em;
@@ -12,9 +13,21 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 span {
-  display: inline-block;
+  display: block;
   line-height: 1em;
   margin-right: .5em;
+}
+
+ul {
+  padding: none;
+  margin: none;
+  list-style: none;
+}
+
+ul li {
+  display: inline-block;
+  padding: 10px 20px 10px 0px;
+  border-bottom: 1px solid #999;
 }
 
 .detail {
@@ -53,6 +66,7 @@ span {
 .health-section {
   background: #f55949;
   display: block;
+  margin-bottom: 40px;
 }
 
 .location-section {
