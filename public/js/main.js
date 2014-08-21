@@ -14,35 +14,35 @@ $(function() {
         age = age/(1000*60*60*24*365);
 
         // Body
-        $('.age').text(age.toFixed(2) + ' years');
-        $('.weight').text(healthData.weight + ' lbs');
+        $('.age').text(age.toFixed(1));
+        $('.weight').text(healthData.weight + ' lb');
         $('.bodyFat').text(healthData.bodyFat + '%');
 
         // Food
         $('.latestMeal').text(healthData.todayFood.latestMeal);
-        $('.calories').text(healthData.todayFood.latestMealCalories.toFixed(2));
+        $('.calories').text(healthData.todayFood.latestMealCalories.toFixed(1));
 
         // Today Food
-        $('.todayCalories').text(healthData.todayFood.calories.toFixed(2));
-        $('.todayProtein').text(healthData.todayFood.protein.toFixed(2) + 'g');
-        $('.todayCarbs').text(healthData.todayFood.carbohydrate.toFixed(2) + 'g');
-        $('.todayFiber').text(healthData.todayFood.fiber.toFixed(2) + 'g');
-        $('.todayUnsatFat').text(healthData.todayFood.unsaturated_fat.toFixed(2) + 'g');
-        $('.todaySatFat').text(healthData.todayFood.saturated_fat.toFixed(2) + 'g');
-        $('.todaySodium').text(healthData.todayFood.sodium.toFixed(2) + 'mg');
+        $('.todayCalories').text(healthData.todayFood.calories.toFixed(1));
+        $('.todayProtein').text(healthData.todayFood.protein.toFixed(1) + 'g');
+        $('.todayCarbs').text(healthData.todayFood.carbohydrate.toFixed(1) + 'g');
+        $('.todayFiber').text(healthData.todayFood.fiber.toFixed(1) + 'g');
+        $('.todayUnsatFat').text(healthData.todayFood.unsaturated_fat.toFixed(1) + 'g');
+        $('.todaySatFat').text(healthData.todayFood.saturated_fat.toFixed(1) + 'g');
+        $('.todaySodium').text(healthData.todayFood.sodium.toFixed(1) + 'mg');
 
         // Activity
         var jawboneMoves = healthData.jawboneMoveData.details;
         $('.yesterdaySteps').text(jawboneMoves.steps);
-        $('.milesWalked').text((jawboneMoves.distance/1609.344).toFixed(2) + " miles");
+        $('.milesWalked').text((jawboneMoves.distance/1609.344).toFixed(1) + " mi");
         $('.caloriedBurned').text((jawboneMoves.calories).toFixed(0));
         $('.activeTime').text(
-          Math.floor(jawboneMoves.active_time/60/60) + " hours " // Hours
-          + Math.round(jawboneMoves.active_time/60 % 60) + " minutes" // Minutes remaining
+          Math.floor(jawboneMoves.active_time/60/60) + "h " // Hours
+          + Math.round(jawboneMoves.active_time/60 % 60) + "m" // Minutes remaining
           );
          $('.inactiveTime').text(
-          Math.floor(jawboneMoves.inactive_time/60/60) + " hours " // Hours
-          + Math.round(jawboneMoves.inactive_time/60 % 60) + " minutes" // Minutes remaining
+          Math.floor(jawboneMoves.inactive_time/60/60) + "h " // Hours
+          + Math.round(jawboneMoves.inactive_time/60 % 60) + "m" // Minutes remaining
           );
 
         // Sleep
@@ -55,16 +55,16 @@ $(function() {
         } else {
           var jawboneSleep = healthData.jawboneSleepData.details;
          $('.yesterdaySleep').text(
-          Math.floor((jawboneSleep.duration - jawboneSleep.awake)/60/60) + " hours " // Hours
-          + Math.round((jawboneSleep.duration- jawboneSleep.awake)/60 % 60) + " minutes" // Minutes remaining
+          Math.floor((jawboneSleep.duration - jawboneSleep.awake)/60/60) + "h " // Hours
+          + Math.round((jawboneSleep.duration- jawboneSleep.awake)/60 % 60) + "m" // Minutes remaining
           );
          $('.deepSleep').text(
-          Math.floor(jawboneSleep.sound/60/60) + " hours " // Hours
-          + Math.round(jawboneSleep.sound/60 % 60) + " minutes" // Minutes remaining
+          Math.floor(jawboneSleep.sound/60/60) + "h " // Hours
+          + Math.round(jawboneSleep.sound/60 % 60) + "m" // Minutes remaining
           );
          $('.lightSleep').text(
-          Math.floor(jawboneSleep.light/60/60) + " hours " // Hours
-          + Math.round(jawboneSleep.light/60 % 60) + " minutes" // Minutes remaining
+          Math.floor(jawboneSleep.light/60/60) + "h " // Hours
+          + Math.round(jawboneSleep.light/60 % 60) + "m" // Minutes remaining
           );
         }
       }
@@ -87,7 +87,7 @@ $(function() {
         var minutes = checkinDate.getMinutes();
 
         // Most recent checkin
-        $('.latestCheckin').text(mostRecentCheckin.venue.name).css('color','#47b3e6');
+        $('.latestCheckin').text(mostRecentCheckin.venue.name);
         $('.time').text(hours + ':' + minutes);
 
         // Loop for last 4 checkins

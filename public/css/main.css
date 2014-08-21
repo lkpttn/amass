@@ -1,37 +1,92 @@
 body {
-  font-family: "proxima-nova-soft",sans-serif;
+  font-family: "brandon-grotesque";
   margin: 0;
+  text-rendering: optimizeLegibility;
+  color: #393939;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: bold;
-  font-family: "effra",sans-serif;
-  margin-right: 0.5em;
+  margin-right: 0.3em;
   margin-bottom: 0.5em;
   display: inline-block;
+  font-weight: bold;
+}
+
+h3 {
+  font-family: "freight-sans-pro";
+  text-transform: uppercase;
+  font-size: 18px;
+}
+
+h4 {
+  font-family: "freight-sans-pro";
+  font-size: 14px;
   text-transform: uppercase;
 }
 
+.health h4 {
+  color: #f55949;
+}
+
+.location h4 {
+  color: #47b3e6;
+}
+
+.social h4 {
+  color: #9acc54;
+}
+
 span {
+  font-size: 29px;
+  font-weight: 400;
   display: block;
-  line-height: 1em;
-  margin-right: .5em;
+  line-height: 1.3em;
 }
 
-ul {
-  padding: none;
-  margin: none;
-  list-style: none;
-}
-
-ul li {
-  display: inline-block;
-  padding: 10px 20px 10px 0px;
+.row {
+  display: table;
+  width: 100%;
+  margin: 0;
+  border-top: 1px solid #999;
   border-bottom: 1px solid #999;
 }
 
+.row + .row {
+  border-top: 0px;
+}
+
+.cell {
+  display: table-cell;
+  float: left;
+  padding: 5px 25px 5px 0px;
+}
+
+.cell + .cell {
+    border-left: 1px solid #999;
+    padding-left: 10px;
+}
+
+.box {
+  height: 210px;
+}
+
+.onefourth {
+  width: 24%;
+  float: left;
+  text-align: right;
+  padding-top: 5px;
+}
+
+.threefourths {
+  width: 75%;
+  float: left;
+  padding-top: 5px;
+  padding-right: 1%;
+}
+
 .detail {
-  color: #999;
+  color: #bcbcbc;
+  font-size: 14px;
 }
 
 .block {
@@ -39,14 +94,14 @@ ul li {
 }
 
 .section-title {
-  font-family: "proxima-nova-soft",sans-serif;
+  font-family: "freight-sans-pro";
+  text-transform: uppercase;
   font-size: 2em;
   color: #fff;
   margin: 0;
   padding: 25px 0;
   width: 100%;
-  text-transform: uppercase;
-  font-weight: 100;
+  font-weight: bold;
 }
 
 .person {
@@ -71,23 +126,17 @@ ul li {
 
 .location-section {
   background: #47b3e6;
+  display: block;
+  margin-bottom: 40px;
 }
 
 .social-section {
   background: #9acc54;
+  display: block;
+  margin-bottom: 40px;
 }
 
-.health h4 {
-  color: #f55949;
-}
 
-.location h4 {
-  color: #47b3e6;
-}
-
-.social h4 {
-  color: #9acc54;
-}
 
 img {
   width: 300px;
