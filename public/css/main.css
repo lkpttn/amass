@@ -40,7 +40,7 @@ h4 {
 
 span {
   font-size: 2.25em;
-  font-weight: 300;
+  font-weight: 400;
   display: block;
   line-height: 1.3em;
 }
@@ -76,6 +76,11 @@ span {
   height: 198px;
 }
 
+.list {
+  font-size: 16px;
+  padding-top: 5px;
+}
+
 .onefourth {
   width: 24%;
   float: left;
@@ -92,7 +97,7 @@ span {
 
 .detail {
   color: #bcbcbc;
-  font-size: 14px;
+  font-size: 18px;
 }
 
 .block {
@@ -145,7 +150,7 @@ span {
 
 
 img {
-  width: 300px;
+  width: 100%;
 }
 
 /* SPECIFICS */
@@ -157,4 +162,16 @@ img {
 .inner {
   border-top: 0;
   padding-bottom: 10px;
+}
+
+.instaphoto {
+  float: left;
+  width: 100%;
+  padding-top: 10px;
+}
+
+.lastfmphoto {
+  width: 100px;
+  padding: 10px 0;
+  float: left;
 }
