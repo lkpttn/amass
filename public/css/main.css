@@ -3,24 +3,26 @@ body {
   margin: 0;
   text-rendering: optimizeLegibility;
   color: #393939;
+  font-size: 14px;
 }
 
 h1, h2, h3, h4, h5, h6 {
   margin-right: 0.3em;
-  margin-bottom: 0.5em;
   display: inline-block;
-  font-weight: bold;
 }
 
 h3 {
-  font-family: "freight-sans-pro";
+  font-family: "brandon-grotesque";
+  margin-bottom: 0.5em;
   text-transform: uppercase;
-  font-size: 18px;
+  font-size: 1.19em;
+  font-weight: 600;
 }
 
 h4 {
   font-family: "freight-sans-pro";
-  font-size: 14px;
+  font-size: 1em;
+  font-weight: bolder;
   text-transform: uppercase;
 }
 
@@ -37,8 +39,8 @@ h4 {
 }
 
 span {
-  font-size: 29px;
-  font-weight: 400;
+  font-size: 2.25em;
+  font-weight: 300;
   display: block;
   line-height: 1.3em;
 }
@@ -66,8 +68,12 @@ span {
     padding-left: 10px;
 }
 
+.full {
+  padding-right: 0px;
+}
+
 .box {
-  height: 210px;
+  height: 198px;
 }
 
 .onefourth {
@@ -94,14 +100,14 @@ span {
 }
 
 .section-title {
-  font-family: "freight-sans-pro";
+  font-family: "brandon-grotesque";
   text-transform: uppercase;
+  font-weight: bolder;
   font-size: 2em;
   color: #fff;
   margin: 0;
   padding: 25px 0;
   width: 100%;
-  font-weight: bold;
 }
 
 .person {
@@ -140,4 +146,15 @@ span {
 
 img {
   width: 300px;
+}
+
+/* SPECIFICS */
+.foursquare {
+  border-bottom: none;
+  padding-bottom: 10px;
+}
+
+.inner {
+  border-top: 0;
+  padding-bottom: 10px;
 }
