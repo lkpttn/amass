@@ -31,6 +31,14 @@ $(function() {
         $('.todaySatFat').text(healthData.todayFood.saturated_fat.toFixed(1) + 'g');
         $('.todaySodium').text(healthData.todayFood.sodium.toFixed(0) + '');
 
+        // Today Food Percent
+        $('.todayProteinPercent').text((healthData.todayFood.protein/80*100).toFixed(0) + '%');
+        $('.todayCarbsPercent').text((healthData.todayFood.carbohydrate/140*100).toFixed(0) + '%');
+        $('.todayFiberPercent').text((healthData.todayFood.fiber/40*100).toFixed(0) + '%');
+        $('.todayUnsatFatPercent').text((healthData.todayFood.unsaturated_fat/40*100).toFixed(0) + '%');
+        $('.todaySatFatPercent').text((healthData.todayFood.saturated_fat/20*100).toFixed(0) + '%');
+        $('.todaySodiumPercent').text((healthData.todayFood.sodium/2300*100).toFixed(0) + '%');
+
         // Activity
         var jawboneMoves = healthData.jawboneMoveData.details;
         $('.yesterdaySteps').text(jawboneMoves.steps);
@@ -151,6 +159,7 @@ $(function() {
         // Hack around Last.fm JSON including a #text
         var recentlyPlayedArtist = lastfm.recentlyPlayed.track[0].artist['#text'];
         var recentlyPlayedAlbumArt = lastfm.recentlyPlayed.track[0].image[3]['#text'];
+
 
         // Last.fm
         $('.lastPlayed').text(lastfm.recentlyPlayed.track[0].name);
