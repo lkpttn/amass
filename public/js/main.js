@@ -158,7 +158,7 @@ $(function() {
         document.getElementById('lastPlayedAlbumArt').setAttribute('src', recentlyPlayedAlbumArt);
 
         for (i = 0; i < 5; i++) {
-          var topArtist = lastfm.weeklyArtists.artist[i];
+          var topArtist = lastfm.weeklyArtists[i];
           $('.topArtist'+i).text(topArtist.name);
           $('.playcount'+i).text(topArtist.playcount);
         }

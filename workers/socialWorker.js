@@ -42,7 +42,7 @@ this.socialUpdates = function(callback) {
 
   // Last.fm variables
   var recentlyPlayedUrl = "http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks";
-  var weeklyArtistUrl = "http://ws.audioscrobbler.com/2.0/?method=user.getweeklyartistchart";
+  var weeklyArtistUrl = "http://ws.audioscrobbler.com/2.0/?method=user.gettopartists";
   var userUrl = "http://ws.audioscrobbler.com/2.0/?method=user.getinfo";
   var artistsUrl = "http://ws.audioscrobbler.com/2.0/?method=user.gettopartists";
 
@@ -64,8 +64,9 @@ this.socialUpdates = function(callback) {
     .query({user : secrets.lastfm.user})
     .query({api_key: secrets.lastfm.apiKey})
     .query({format: "json"})
+    .query({period: '7day'})
     .end(function(res){
-      socialData.lastfm.weeklyArtists = res.body.weeklyartistchart;
+      socialData.lastfm.weeklyArtists = res.body.topartists.artist;
     });
 
   // Gets user information
