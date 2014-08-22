@@ -21,14 +21,14 @@
 /* #Base 960 Grid - Edited to 1000px
 ================================================== */
 
-    .container                                  { position: relative; width: 1000px; margin: 0 auto; padding: 0; }
+    .container                                  { position: relative; width: 960px; margin: 0 auto; padding: 0; }
     .container .column,
     .container .columns                         { float: left; display: inline; margin-left: 20px; margin-right: 20px; }
     .row                                        { margin-bottom: 20px; }
 
     /* Nested Column Classes */
     .column.alpha, .columns.alpha               { margin-left: 0; }
-    .column.omega, .columns.omega               { margin-right: 0; }
+    .column.omega, .columns.omega               { margin-right: 0; float: right; }
 
     /* Base Grid */
     .container .one.column,

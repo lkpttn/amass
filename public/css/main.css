@@ -72,6 +72,7 @@ span {
 
 .full {
   padding-right: 0px;
+  width: 100%;
 }
 
 .box {
@@ -187,7 +188,7 @@ div.trigger:hover > span.foodpercent {
 .lastfmphoto {
   width: 100px;
   padding: 5px 0;
-  padding-right: 5px;
+  padding-right: 10px;
   float: left;
 }
 
@@ -195,6 +196,11 @@ div.trigger:hover > span.foodpercent {
   float: left;
   padding: 0 5px;
 }
+
+.floatr {
+  float: right;
+}
+
 
 
 
