@@ -96,7 +96,6 @@ this.socialUpdates = function(callback) {
   socialData.instagram.lastPhoto = medias[0].images.standard_resolution.url;
   socialData.instagram.lastPhotoLikes = medias[0].likes.count;
   socialData.instagram.lastPhotoComments = medias[0].comments.count;
-  socialData.instagram.lastPhotoCaption = medias[0].caption.text;
   });
 
   ig.user('10965807', function(err, result, limit) {

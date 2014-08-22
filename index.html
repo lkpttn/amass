@@ -28,7 +28,7 @@
             <div class="body eight columns alpha block">
                 <h3>Body</h3>
                 <div class="row">
-                    <div class="cell"><h4>Age</h4><span class="age">22</span></div>
+                    <div class="cell"><h4>Age</h4><span class="age">___</span></div>
                     <div class="cell"><h4>Height</h4><span class="height">5'11</span></div>
                     <div class="cell"><h4>Weight</h4><span class="weight"></span></div>
                     <div class="cell"><h4>Fat Percent</h4><span class="bodyFat"></span></div>
@@ -147,7 +147,7 @@
 
         <section class="container">
 
-            <div class="instagram eight columns alpha">
+            <div class="twitter eight columns alpha">
                 <h3>Twitter</h3>
                 <div class="row">
                     <div class="cell full"><h4>Latest Tweet</h4><span class="latestTweet"></span></div>
@@ -162,10 +162,15 @@
             <div class="instagram eight columns omega">
                 <h3>Instagram</h3>
                 <div class="row">
-                    <span class="instaphoto"><img id="lastPhoto"></span>
-                    <!-- <h4>Caption</h4><span class="lastPhotoCaption"></span> -->
-                    <h4>Likes</h4><span class="lastPhotoLikes"></span>
-                    <h4>Comments</h4><span class="lastPhotoComments"></span>
+                    <div class="cell full image"><h4>Latest Photo</h4>
+                    <figure class="instaphoto slide">
+                        <img id="lastPhoto">
+                        <figcaption>
+                        <div class="floatl"><h4>Likes</h4><span class="lastPhotoLikes"></span></div>
+                        <div class="floatl"><h4>Comments</h4><span class="lastPhotoComments"></span></div>
+                        </figcaption>
+                    </figure>
+                    </div>
                 </div>
 
                 <div class="row">
@@ -178,9 +183,11 @@
             <div class="lastfm eight columns alpha">
                 <h3>Music</h3>
                 <div class="row">
-                    <span><img class="lastfmphoto" id="lastPlayedAlbumArt"></span>
-                    <div class="cell"><h4>Last Played Song</h4><span class="lastPlayed"></span></div>
-                    <div class="cell"><span class="lastPlayedArtist detail"></span></div>
+                    <div class="cell full"><h4>Last Played Song</h4>
+                        <img class="lastfmphoto" id="lastPlayedAlbumArt">
+                        <span class="lastPlayed"></span>
+                        <span class="lastPlayedArtist detail"></span>
+                    </div>
                 </div>
 
                 <div class="row">
