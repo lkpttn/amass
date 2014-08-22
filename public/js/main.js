@@ -29,7 +29,7 @@ $(function() {
         $('.todayFiber').text(healthData.todayFood.fiber.toFixed(1) + 'g');
         $('.todayUnsatFat').text(healthData.todayFood.unsaturated_fat.toFixed(1) + 'g');
         $('.todaySatFat').text(healthData.todayFood.saturated_fat.toFixed(1) + 'g');
-        $('.todaySodium').text(healthData.todayFood.sodium.toFixed(1) + 'mg');
+        $('.todaySodium').text(healthData.todayFood.sodium.toFixed(0) + '');
 
         // Activity
         var jawboneMoves = healthData.jawboneMoveData.details;
