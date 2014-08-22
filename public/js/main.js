@@ -24,9 +24,9 @@ $(function() {
 
         // Today Food
         $('.todayCalories').text(healthData.todayFood.calories.toFixed(1));
-        $('.todayProtein').text(healthData.todayFood.protein.toFixed(1) + 'g');
+        $('.todayProtein').text(healthData.todayFood.protein.toFixed(0) + 'g');
         $('.todayCarbs').text(healthData.todayFood.carbohydrate.toFixed(1) + 'g');
-        $('.todayFiber').text(healthData.todayFood.fiber.toFixed(1) + 'g');
+        $('.todayFiber').text(healthData.todayFood.fiber.toFixed(0) + 'g');
         $('.todayUnsatFat').text(healthData.todayFood.unsaturated_fat.toFixed(1) + 'g');
         $('.todaySatFat').text(healthData.todayFood.saturated_fat.toFixed(1) + 'g');
         $('.todaySodium').text(healthData.todayFood.sodium.toFixed(0) + '');

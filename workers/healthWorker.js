@@ -32,11 +32,11 @@ this.healthUpdates = function(callback) {
       // Load last 7 days into an array
       for (i = 0; i < 7; i++) {
         var pastDay = latestDay - i;
-        pastWeekWeight[i] = rows[pastDay].weight + ' lbs';
+        pastWeekWeight[i] = rows[pastDay].weight;
         // console.log(rows[pastDay.date + ' : ' + rows[pastDay].weight + 'lbs');
       };
 
-      healthData.weight = rows[latestDay].weight;
+      healthData.weight = Math.round(rows[latestDay].weight);
       healthData.bodyFat = rows[latestDay].fat;
       healthData.pastWeekWeight = pastWeekWeight.reverse();
 
