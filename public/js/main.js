@@ -55,8 +55,45 @@ $(function() {
 
         // Running
         var runkeeperRun = healthData.runkeeper.latestRun;
+        $('.latestRunTime').text(runkeeperRun.start_time);
         $('.latestRunDistance').text((runkeeperRun.total_distance*0.000621371).toFixed(2) + ' mi');
         $('.latestRunDuration').text((runkeeperRun.duration/60).toFixed(1) + " min");
+
+        // Running map
+        L.mapbox.accessToken = 'pk.eyJ1IjoibGtwdHRuIiwiYSI6InNXMnVtRjAifQ.5U8rLs-7oktv8HotJCvrcQ';
+        map_options = {
+          touchZoom: false,
+          scrollWheelZoom: false,
+          doubleClickZoom: false,
+          boxZoom: false,
+          tap: false,
+          zoomControl: false,
+          attributionControl: false
+        };
+        var map = L.mapbox.map('map', 'lkpttn.jabob21n', map_options)
+
+        // Load latest run path
+        var runArray = runkeeperRun.path;
+        // Line style
+        var polyline_options = {
+            color: '#f55949',
+            weight: 7,
+            opacity: 1.0,
+            smoothFactor: 1.0
+        };
+        var polyline = L.polyline([], polyline_options).addTo(map);
+        var length = 0;
+
+        add();
+
+        function add() {
+          var temp = L.latLng(runArray[length].latitude, runArray[length].longitude);
+          console.log(temp);
+          polyline.addLatLng(temp);
+          map.setView(temp, 16);
+
+          if (++length < runArray.length) window.setTimeout(add, 40);
+        };
 
         // Sleep
         var sleeping = "I'm probably asleep right now!";

@@ -153,6 +153,10 @@ img {
   width: 100%;
 }
 
+#map {
+  height: 400px;
+}
+
 /* SPECIFICS */
 .foodpercent {
   position: relative;

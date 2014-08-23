@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/skeleton.css">
+    <link href='https://api.tiles.mapbox.com/mapbox.js/v2.0.1/mapbox.css' rel='stylesheet' />
     <link rel="stylesheet" href="/css/main.css">
     <script type="text/javascript" src="//use.typekit.net/hrx1wrx.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
@@ -55,8 +56,14 @@
             <div class="activity eight columns omega block">
                 <h3>Exercise</h3>
                 <div class="row">
+                    <div class="cell"><h4>Last Run</h4><span class="latestRunTime"></span></div>
                     <div class="cell"><h4>Last Run</h4><span class="latestRunDistance"></span></div>
                     <div class="cell"><h4>Last Run</h4><span class="latestRunDuration"></span></div>
+                </div>
+                <div class="row">
+                    <div class="cell full">
+                        <div id="map"></div>
+                    </div>
                 </div>
             </div>
 
@@ -249,6 +256,8 @@
 
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src='https://api.tiles.mapbox.com/mapbox.js/v2.0.1/mapbox.js'></script>
     <script src="/js/main.js"></script>
+
 </body>
 </html>
