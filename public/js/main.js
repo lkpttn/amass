@@ -53,6 +53,11 @@ $(function() {
           + Math.round(jawboneMoves.inactive_time/60 % 60) + "m" // Minutes remaining
           );
 
+        // Running
+        var runkeeperRun = healthData.runkeeper.latestRun;
+        $('.latestRunDistance').text((runkeeperRun.total_distance*0.000621371).toFixed(2) + ' mi');
+        $('.latestRunDuration').text((runkeeperRun.duration/60).toFixed(1) + " min");
+
         // Sleep
         var sleeping = "I'm probably asleep right now!";
         // If there's no sleep data available

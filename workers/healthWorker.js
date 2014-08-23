@@ -2,20 +2,31 @@
 var app = require('../app');
 var secrets = app.secrets;
 
+var healthData = {};
+
 // Google Spreadsheet
 var GoogleSpreadsheet = require('google-spreadsheet');
 var weightSpreadsheet = new GoogleSpreadsheet(secrets.googleSpreadsheet.weightID);
 
 // Jawbone
 var jawboneOptions = {
-  access_token:  secrets.jawbone.access_token
+  access_token: secrets.jawbone.access_token
   //client_secret: secrets.jawbone.client_secret  // Client Secret (required for up.refreshToken.get())
 }
 var up = require('jawbone-up')(jawboneOptions);
 
+// Runkeeper
+var runkeeperOptions = exports.options = {
+    client_id: secrets.runkeeper.client_id,
+    client_secret: secrets.runkeeper.client_secret,
+    access_token: secrets.runkeeper.access_token,
+    api_domain: secrets.runkeeper.api_domain
+};
+var runkeeper = require('runkeeper-js');
+var client = new runkeeper.HealthGraph(runkeeperOptions);
+var latestRunUri = null;
+healthData.runkeeper = {};
 
-
-var healthData = {};
 
 this.healthUpdates = function(callback) {
 
@@ -137,6 +148,23 @@ this.healthUpdates = function(callback) {
         todayFood.sodium = todayFood.sodium + foodData[i].details.sodium;
       }
     }
+  });
+
+  // Gets running data from Runkeeper/Healthgraph
+  // First all activity feed, then the last run
+  client.fitnessActivityFeed(function(err, reply) {
+      if(err) { console.log(err); }
+
+      // Do whatever you need with the API's reply.
+      // console.log(reply);
+      latestRunUri = reply.items[0].uri;
+
+      client.apiCall('GET', 'application/vnd.com.runkeeper.FitnessActivity+json', latestRunUri,function(err, reply) {
+      if(err) { console.log(err); }
+
+      // Do whatever you need with the API's reply.
+      health.runkeeper.latestRun = reply;
+    });
   });
 
   callback(healthData);
