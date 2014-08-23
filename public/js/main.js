@@ -55,9 +55,14 @@ $(function() {
 
         // Running
         var runkeeperRun = healthData.runkeeper.latestRun;
-        $('.latestRunTime').text(runkeeperRun.start_time);
+        var startRunDate = new Date(runkeeperRun.start_time);
+        var startRun = startRunDate.toDateString().slice(0,-4);
+        $('.latestRunTime').text(startRun);
         $('.latestRunDistance').text((runkeeperRun.total_distance*0.000621371).toFixed(2) + ' mi');
-        $('.latestRunDuration').text((runkeeperRun.duration/60).toFixed(1) + " min");
+        $('.latestRunDuration').text(
+          (Math.floor(runkeeperRun.duration/60) + "m " // Minutes
+          + Math.round(runkeeperRun.duration % 60) + "s") // Seconds
+        );
 
         // Running map
         L.mapbox.accessToken = 'pk.eyJ1IjoibGtwdHRuIiwiYSI6InNXMnVtRjAifQ.5U8rLs-7oktv8HotJCvrcQ';
@@ -88,7 +93,6 @@ $(function() {
 
         function add() {
           var temp = L.latLng(runArray[length].latitude, runArray[length].longitude);
-          console.log(temp);
           polyline.addLatLng(temp);
           map.setView(temp, 16);
 
