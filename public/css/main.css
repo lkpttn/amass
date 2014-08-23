@@ -153,8 +153,19 @@ img {
   width: 100%;
 }
 
-#map {
+#runMap {
   height: 400px;
+}
+
+#placeMap {
+  height: 400px;
+}
+
+.placeIcon {
+  background: #47b3e6;
+  width: 50px;
+  border: 0;
+  opacity: 0.75;
 }
 
 /* SPECIFICS */

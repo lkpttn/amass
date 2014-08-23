@@ -75,7 +75,7 @@ $(function() {
           zoomControl: false,
           attributionControl: false
         };
-        var map = L.mapbox.map('map', 'lkpttn.jabob21n', map_options)
+        var runMap = L.mapbox.map('runMap', 'lkpttn.jabob21n', map_options)
 
         // Load latest run path
         var runArray = runkeeperRun.path;
@@ -86,7 +86,7 @@ $(function() {
             opacity: 1.0,
             smoothFactor: 1.0
         };
-        var polyline = L.polyline([], polyline_options).addTo(map);
+        var polyline = L.polyline([], polyline_options).addTo(runMap);
         var length = 0;
 
         add();
@@ -94,7 +94,7 @@ $(function() {
         function add() {
           var temp = L.latLng(runArray[length].latitude, runArray[length].longitude);
           polyline.addLatLng(temp);
-          map.setView(temp, 16);
+          runMap.setView(temp, 16);
 
           if (++length < runArray.length) window.setTimeout(add, 40);
         };
@@ -177,6 +177,32 @@ $(function() {
         travelList = travelList.slice(0, -2);
         $('.travelVenuePlace').text(travelList);
 
+        // Place map
+        L.mapbox.accessToken = 'pk.eyJ1IjoibGtwdHRuIiwiYSI6InNXMnVtRjAifQ.5U8rLs-7oktv8HotJCvrcQ';
+        map_options = {
+          touchZoom: false,
+          scrollWheelZoom: false,
+          doubleClickZoom: false,
+          boxZoom: false,
+          tap: false,
+          zoomControl: false,
+          attributionControl: false
+        };
+        var placeMap = L.mapbox.map('placeMap', 'lkpttn.jaco7c8l', map_options);
+        var foursquarePlaces = L.layerGroup().addTo(placeMap);
+
+        // Load places
+        var placeArray = locationData.foursquare.checkins.items;
+
+        for (var i = 0; i < placeArray.length; i++) {
+        var venue = placeArray[i].venue;
+        var latlng = L.latLng(placeArray[i].venue.location.lat, placeArray[i].venue.location.lng);
+        var circle = L.circle(latlng, 300, {
+          stroke: false,
+          fillColor: '#47b3e6',
+          fillOpacity: 0.4
+          }).addTo(foursquarePlaces);
+        }
       }
     });
   };

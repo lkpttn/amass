@@ -22,7 +22,7 @@ var mostRecentCheckin = null;
 // Update all location services
 this.locationUpdates = function(callback) {
   // Gets foursqare checkins
-  Foursquare.Users.getCheckins(null, null, secrets.foursquare.accessToken, function (error, data) {
+  Foursquare.Users.getCheckins(null, {'limit':100}, secrets.foursquare.accessToken, function (error, data) {
 
     // Pulls checkins item out of JSON response
     mostRecentCheckin = data.checkins.items[0];
