@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/main.css">
     <script type="text/javascript" src="//use.typekit.net/hrx1wrx.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    <script src="/js/Chart.js"></script>
     <title>My Cool Website</title>
 </head>
 
@@ -35,9 +36,17 @@
                     <div class="cell"><h4>Fat Percent</h4><span class="bodyFat"></span></div>
                 </div>
                 <div class="row">
+                    <div class="cell full">
+                    <h4>Weight</h4>
+                    <canvas id="weightChart" height="50%" width="100%"></canvas>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="cell"><h4>Current Heart Rate</h4><span class="">64.1</span></div>
                     <div class="cell"><h4>Average Heart Rate</h4><span class="">67.8</span></div>
                 </div>
+
+
             </div>
 
             <div class="activity eight columns omega block">
@@ -50,6 +59,12 @@
                 <div class="row">
                     <div class="cell"><h4>Active Time</h4><span class="activeTime"></span></div>
                     <div class="cell"><h4>Inactive Time</h4><span class="inactiveTime"></span></div>
+                </div>
+                <div class="row">
+                    <div class="cell full">
+                    <h4>Activity</h4>
+                    <canvas id="activityChart" height="50%" width="100%"></canvas>
+                    </div>
                 </div>
             </div>
 

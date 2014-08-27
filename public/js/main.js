@@ -18,6 +18,39 @@ $(function() {
         $('.weight').text(healthData.weight + ' lb');
         $('.bodyFat').text(healthData.bodyFat + '%');
 
+        var weightChartData = {
+        labels : ["","","","","","", ""],
+        datasets : [
+          {
+            label: "My First dataset",
+            fillColor : "rgba(245, 89, 73, 0.2)",
+            strokeColor : "rgba(245, 89, 73, 0.5)",
+            pointColor : "#f55949",
+            pointStrokeColor : "#f55949",
+            pointHighlightFill : "#fff",
+            pointHighlightStroke : "rgba(220,220,220,1)",
+            data : healthData.pastWeekWeight
+            }
+          ]
+        }
+
+        var drawChart = function(){
+          var ctx = document.getElementById("weightChart").getContext("2d");
+          window.myLine = new Chart(ctx).Line(weightChartData, {
+            responsive: true,
+            showTooltips: false,
+            scaleOverride: true,
+            // Number - The number of steps in a hard coded scale
+            scaleSteps: 5,
+            // Number - The value jump in the hard coded scale
+            scaleStepWidth: 1,
+            // Number - The scale starting value
+            scaleStartValue: 150
+          });
+        }
+
+        drawChart();
+
         // Food
         $('.latestMeal').text(healthData.todayFood.latestMeal);
         $('.calories').text(healthData.todayFood.latestMealCalories.toFixed(1));
@@ -52,6 +85,52 @@ $(function() {
           Math.floor(jawboneMoves.inactive_time/60/60) + "h " // Hours
           + Math.round(jawboneMoves.inactive_time/60 % 60) + "m" // Minutes remaining
           );
+
+        var activityTotal = [];
+        var keysArray = Object.keys(healthData.jawboneMoveData.details.hourly_totals);
+        var activityTotalSteps = null;
+        console.log(keysArray);
+
+        for (i = 0; i < keysArray.length; i++) {
+          var temp = keysArray[i];
+          var tempItem = jawboneMoves.hourly_totals[temp];
+          activityTotalSteps = activityTotalSteps + tempItem.steps;
+          activityTotal[i] = activityTotalSteps;
+        }
+
+        var activityChartData = {
+        labels : activityTotal,
+        datasets : [
+          {
+            label: "My First dataset",
+            fillColor : "rgba(245, 89, 73, 0.2)",
+            strokeColor : "rgba(245, 89, 73, 0.5)",
+            pointColor : "#f55949",
+            pointStrokeColor : "#f55949",
+            pointHighlightFill : "#fff",
+            pointHighlightStroke : "rgba(220,220,220,1)",
+            data : activityTotal
+            }
+          ]
+        }
+
+        var drawChart = function(){
+          var ctx = document.getElementById("activityChart").getContext("2d");
+          window.myLine = new Chart(ctx).Line(activityChartData, {
+            responsive: true,
+            showTooltips: false,
+            pointDot: false,
+            scaleOverride: true,
+            // Number - The number of steps in a hard coded scale
+            scaleSteps: 10,
+            // Number - The value jump in the hard coded scale
+            scaleStepWidth: 1000,
+            // Number - The scale starting value
+            scaleStartValue: 0
+          });
+        }
+
+        drawChart();
 
         // Running
         var runkeeperRun = healthData.runkeeper.latestRun;
