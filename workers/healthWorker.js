@@ -88,15 +88,15 @@ this.healthUpdates = function(callback) {
     }
   });
 
-  // Retreives sleep activity for last night
-  up.sleeps.get({'date': today}, function (err, body) {
+  // Retreives sleep activity
+  up.sleeps.get({}, function (err, body) {
     if (err) {
       console.log('Error: ' + err);
     }
     else {
       console.log('Sleep data is loaded');
       var data = JSON.parse(body).data;
-      health.jawboneSleepData = data.items[0];
+      health.jawboneSleepData = data.items;
     }
   });
 

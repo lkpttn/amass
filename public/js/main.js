@@ -13,6 +13,16 @@ $(function() {
         var age = now.getTime() - birthday.getTime();
         age = age/(1000*60*60*24*365);
 
+        // For getting day of the week
+        var weekday=new Array(7);
+        weekday[0]="Monday";
+        weekday[1]="Tuesday";
+        weekday[2]="Wednesday";
+        weekday[3]="Thursday";
+        weekday[4]="Friday";
+        weekday[5]="Saturday";
+        weekday[6]="Sunday";
+
         // Body
         $('.age').text(age.toFixed(1));
         $('.weight').text(healthData.weight + ' lb');
@@ -50,6 +60,8 @@ $(function() {
         }
 
         drawChart();
+
+
 
         // Food
         $('.latestMeal').text(healthData.todayFood.latestMeal);
@@ -89,7 +101,6 @@ $(function() {
         var activityTotal = [];
         var keysArray = Object.keys(healthData.jawboneMoveData.details.hourly_totals);
         var activityTotalSteps = null;
-        console.log(keysArray);
 
         for (i = 0; i < keysArray.length; i++) {
           var temp = keysArray[i];
@@ -118,13 +129,13 @@ $(function() {
           var ctx = document.getElementById("activityChart").getContext("2d");
           window.myLine = new Chart(ctx).Line(activityChartData, {
             responsive: true,
-            showTooltips: false,
+            showTooltips: true,
             pointDot: false,
             scaleOverride: true,
             // Number - The number of steps in a hard coded scale
-            scaleSteps: 10,
+            scaleSteps: 5,
             // Number - The value jump in the hard coded scale
-            scaleStepWidth: 1000,
+            scaleStepWidth: 2000,
             // Number - The scale starting value
             scaleStartValue: 0
           });
@@ -186,7 +197,7 @@ $(function() {
           $('.deepSleep').text('~');
           $('.lightSleep').text('~');
         } else {
-          var jawboneSleep = healthData.jawboneSleepData.details;
+          var jawboneSleep = healthData.jawboneSleepData[0].details;
          $('.yesterdaySleep').text(
           Math.floor((jawboneSleep.duration - jawboneSleep.awake)/60/60) + "h " // Hours
           + Math.round((jawboneSleep.duration- jawboneSleep.awake)/60 % 60) + "m" // Minutes remaining
@@ -200,6 +211,53 @@ $(function() {
           + Math.round(jawboneSleep.light/60 % 60) + "m" // Minutes remaining
           );
         }
+
+        var sleepArray = [];
+        var daysArray = [];
+        for (i = 0; i < 7; i++) {
+          var temp = ((healthData.jawboneSleepData[i].details.duration - healthData.jawboneSleepData[i].details.awake)/60/60).toFixed(1);
+          sleepArray.unshift(temp);
+          var d = new Date(0); // The 0 there is the key, which sets the date to the epoch
+          d.setUTCSeconds(healthData.jawboneSleepData[i].time_created);
+          daysArray.unshift(weekday[d.getDay()].slice(0,3));
+        }
+
+        console.log(sleepArray);
+        console.log(daysArray);
+
+        var sleepChartData = {
+        labels : daysArray,
+        datasets : [
+          {
+            label: "My First dataset",
+            fillColor : "rgba(245, 89, 73, 1)",
+            strokeColor : "rgba(245, 89, 73, 1)",
+            pointColor : "#f55949",
+            pointStrokeColor : "#f55949",
+            pointHighlightFill : "#fff",
+            pointHighlightStroke : "rgba(220,220,220,1)",
+            data : sleepArray
+            }
+          ]
+        }
+
+        var drawChart = function(){
+          var ctx = document.getElementById("sleepChart").getContext("2d");
+          window.myLine = new Chart(ctx).Bar(sleepChartData, {
+            responsive: true,
+            showTooltips: true,
+            scaleOverride: true,
+            // Number - The number of steps in a hard coded scale
+            scaleSteps: 5,
+            // Number - The value jump in the hard coded scale
+            scaleStepWidth: 1,
+            // Number - The scale starting value
+            scaleStartValue: 5
+          });
+        }
+
+        drawChart();
+
       }
     });
   };
