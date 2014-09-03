@@ -74,7 +74,11 @@ this.healthUpdates = function(callback) {
 
   // Today object for meals
   var tdd = today.getDate();
+  if (dd < 10) {
+    tdd = 0 + "" + tdd;
+  }
   var today = yyyy + "" + mm + "" + tdd;
+  console.log(today);
 
   // Retreives physical activity for yesterday
   up.moves.get({'date': yesterday}, function (err, body) {

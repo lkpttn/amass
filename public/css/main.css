@@ -75,7 +75,7 @@ span {
 }
 
 .box {
-  height: 198px;
+  min-height: 212px;
 }
 
 .list {

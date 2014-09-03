@@ -51,11 +51,11 @@ $(function() {
             showTooltips: false,
             scaleOverride: true,
             // Number - The number of steps in a hard coded scale
-            scaleSteps: 5,
+            scaleSteps: 6,
             // Number - The value jump in the hard coded scale
             scaleStepWidth: 1,
             // Number - The scale starting value
-            scaleStartValue: 150
+            scaleStartValue: 148
           });
         }
 
@@ -246,13 +246,7 @@ $(function() {
           window.myLine = new Chart(ctx).Bar(sleepChartData, {
             responsive: true,
             showTooltips: true,
-            scaleOverride: true,
-            // Number - The number of steps in a hard coded scale
-            scaleSteps: 5,
-            // Number - The value jump in the hard coded scale
-            scaleStepWidth: 1,
-            // Number - The scale starting value
-            scaleStartValue: 5
+            scaleOverride: false
           });
         }
 
